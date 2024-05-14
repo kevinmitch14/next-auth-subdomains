@@ -1,18 +1,19 @@
-import { SignOutButton, SignInButton } from "../client-components";
+import { SignOutButton, SignInButton, Provider } from "../client-components";
+// v4 version
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
-// import { auth } from "@/auth";
-
+// v5 version
+import { auth } from "@/auth";
 export default async function TenantPage({
   params,
 }: {
   params: { tenant: string };
 }) {
   // v5 version
-  // const session = await auth();
+  const session = await auth();
 
   // v4 version
-  const session = await getServerSession(authOptions);
+  // const session = await getServerSession(authOptions);
 
   console.log(session);
   return (

@@ -2,14 +2,6 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  callbacks: {
-    redirect({ url, baseUrl }) {
-      const r = new URL(url).origin;
-      console.log({ r });
-      if (new URL(url).origin === baseUrl) return url;
-      return baseUrl;
-    },
-  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
